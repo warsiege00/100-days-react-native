@@ -4,5 +4,5 @@ Este projeto é um aplicativo de compartilhamento de conta a ser paga que calcul
 
 ## Screenshots
 
-![screenshot1](screenshots/screen01.png)
-![screenshot2](screenshots/screen02.png)
+![Screenshot1](https://raw.github.com/warsiege00/100-days-react-native/main/screenshots/screen01.png.png)
+![Screenshot2](https://raw.github.com/warsiege00/100-days-react-native/main/screenshots/screen02.png.png)
