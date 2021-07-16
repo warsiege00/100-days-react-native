@@ -1,0 +1,13 @@
+project1-WeSplit/node_modules/
+project1-WeSplit/.expo/
+project1-WeSplit/npm-debug.*
+project1-WeSplit/*.jks
+project1-WeSplit/*.p8
+project1-WeSplit/*.p12
+project1-WeSplit/*.key
+project1-WeSplit/*.mobileprovision
+project1-WeSplit/project1-WeSplit/*.orig.*
+web-build/
+
+# macOS
+project1-WeSplit/.DS_Store
