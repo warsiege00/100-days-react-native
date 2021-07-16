@@ -1,11 +1,26 @@
-import React from 'react';
+import React, {useEffect,useState} from 'react';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
 import CurrencyInput from 'react-native-currency-input';
 import {Picker} from '@react-native-picker/picker';
 
 const HomeScreen = ({navigation}) => {
-    const [valueCurrency, setValueCurrency] = React.useState(0)
-    const [selectedTip, setSelectedTip] = React.useState();
+    const [valueCurrency, setValueCurrency] = useState(0)
+    const [valuePeopleNumber, setvaluePeopleNumber] = useState(1)
+    const [totalAmount, setTotalAmount] = useState()
+    const [totalAmountPerPerson, setTotalAmountPerPerson] = useState()  
+    const [selectedTip, setSelectedTip] = useState(1)
+    const [tipAmountValue, setTipAmountValue] = useState(0)
+
+    useEffect(() => {        
+        setTotalAmount(valueCurrency + tipAmountValue)
+        setTotalAmountPerPerson( (valueCurrency + tipAmountValue)/valuePeopleNumber)
+    });
+
+    function handleChangeTips(itemValue) {
+        setSelectedTip(itemValue)        
+        setTipAmountValue((itemValue/valueCurrency)*100)        
+    }
+   
 
     return (       
         <View style={styles.container}>        
@@ -28,7 +43,8 @@ const HomeScreen = ({navigation}) => {
                 placeholder="Número de pessoas"
                 style={styles.input}
                 keyboardType = 'numeric'
-                >
+                value={valuePeopleNumber.toString()}     
+                onChangeText={setvaluePeopleNumber}>
             </TextInput>
             <Text style={styles.inputTitle}>
                 Quanto de gorjeta você deseja deixar?
@@ -36,18 +52,28 @@ const HomeScreen = ({navigation}) => {
             <View>
                 <Picker
                     selectedValue={selectedTip}
-                    onValueChange={(itemValue, itemIndex) =>
-                        setSelectedTip(itemValue)
+                    onValueChange={(itemValue, itemIndex) => 
+                        handleChangeTips(itemValue)            
                     }
                     >
                     <Picker.Item label="0%" value="0" />
                     <Picker.Item label="5%" value="5" />
                     <Picker.Item label="10%" value="10" />
+                    <Picker.Item label="15%" value="15" />
+                    <Picker.Item label="25%" value="25" />
                 </Picker> 
             </View>
             <View >
+                <Text style={styles.inputTitle}>Total a ser pago</Text>
+                <Text style={styles.input}>R$ {totalAmount}</Text> 
+                <Text style={styles.inputTitle}>Total a ser pago por pessoa</Text>
+                <Text style={styles.input}>R$ {totalAmountPerPerson}</Text> 
+
                 <Text style={styles.inputTitle}>
-                    Total
+                    Currency: {valueCurrency}
+                    People: {valuePeopleNumber}    
+                    Tip: {selectedTip}      
+                    TipAmount: {tipAmountValue}          
                 </Text>   
                 
             </View>        

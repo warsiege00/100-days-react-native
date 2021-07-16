@@ -17,7 +17,7 @@ export default function App() {
           name="Home"
           component={HomeScreen}
           options={{ 
-            title: 'Divide aí!',
+            title: 'Divide aí pra nós!',
             headerStyle: { 
               backgroundColor: 'papayawhip',               
             },
